@@ -1,0 +1,5 @@
+fastapi==0.95.1
+uvicorn==0.22.0
+redis==4.5.4
+docker==7.1.0
+websockets==11.0.3

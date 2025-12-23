@@ -1,0 +1,41 @@
+services:
+  backend:
+    build: ./backend
+    ports: ["8000:8000"]
+    volumes: ["/var/run/docker.sock:/var/run/docker.sock"]
+    depends_on: [redis]
+  redis:
+    image: redis:alpine
+  frontend:
+    image: node:18-alpine
+    working_dir: /app
+    volumes: ["./frontend:/app"]
+    command: sh -c "npm install && npm run dev -- --host"
+    ports: ["3000:3000"]
+    depends_on: [backend]
+
+  # --- WORKER CLUSTER (6 Nodes) ---
+  worker-1:
+    image: alpine
+    command: sh -c "while true; do sleep 1000; done"
+    container_name: worker-node-01
+  worker-2:
+    image: alpine
+    command: sh -c "while true; do sleep 1000; done"
+    container_name: worker-node-02
+  worker-3:
+    image: alpine
+    command: sh -c "while true; do sleep 1000; done"
+    container_name: worker-node-03
+  worker-4:
+    image: alpine
+    command: sh -c "while true; do sleep 1000; done"
+    container_name: worker-node-04
+  worker-5:
+    image: alpine
+    command: sh -c "while true; do sleep 1000; done"
+    container_name: worker-node-05
+  worker-6:
+    image: alpine
+    command: sh -c "while true; do sleep 1000; done"
+    container_name: worker-node-06
