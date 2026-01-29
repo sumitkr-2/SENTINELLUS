@@ -78,6 +78,37 @@ You can run the entire system with **one command**. No manual setup required.
 3.  **Launch:**
     Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## ✅ What YOU should do (recommended workflow if something breaks while running code)
+
+### 🔹 First time (or after cloning repo)
+
+```bash
+docker compose up --build
+```
+
+---
+
+### 🔹 Daily development (90% of time)
+
+```bash
+docker compose up
+```
+
+Stop with:
+
+```bash
+Ctrl + C
+```
+
+---
+
+### 🔹 If something breaks badly
+
+```bash
+docker compose down -v
+docker compose up --build
+```
+
 ---
 
 ## 🕹️ How to Use (Demo Script)
